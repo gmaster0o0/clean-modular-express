@@ -1,0 +1,32 @@
+# Ensure consistent line endings for text files
+* text=auto
+
+# Explicitly declare text files to normalize line endings
+*.js text
+*.mjs text
+*.cjs text
+*.ts text
+*.json text
+*.md text
+*.yml text
+*.yaml text
+*.html text
+*.css text
+*.scss text
+*.txt text
+
+# Treat shell scripts as text and preserve executable bit
+*.sh text eol=lf
+
+# Disable diff for generated files
+*.lock binary
+node_modules/** binary
+
+# Export ignore
+prisma/migrations/** export-ignore
+node_modules/** export-ignore
+.DS_Store export-ignore
+.env export-ignore
+npm-debug.log export-ignore
+yarn-debug.log export-ignore
+yarn-error.log export-ignore

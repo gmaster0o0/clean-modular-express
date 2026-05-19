@@ -1,0 +1,5 @@
+node_modules/
+
+/app/generated/prisma
+dev.db
+.env
