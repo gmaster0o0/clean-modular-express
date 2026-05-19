@@ -10,3 +10,34 @@ generator client {
 datasource db {
   provider = "sqlite"
 }
+
+model User {
+  id       String    @id @default(uuid())
+  name     String    // Ezt használhatod kijelzésre
+  email    String    @unique // A Better Auth-nak ez a bejelentkezési azonosítója
+  sessions Session[]
+  accounts Account[]
+
+  @@map("user")
+}
+
+model Session {
+  id        String   @id @default(uuid())
+  expiresAt DateTime
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("session")
+}
+
+model Account {
+  id         String  @id @default(uuid())
+  accountId  String
+  providerId String
+  userId     String
+  user       User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  password   String? // Itt fog lakni a hashelt jelszó
+
+  @@map("account")
+}

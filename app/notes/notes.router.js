@@ -10,4 +10,7 @@ router.get("/:id", NotesController.getNoteById);
 router.put("/:id", NotesController.updateNote);
 router.delete("/:id", NotesController.deleteNote);
 */
+router.get("/", (req, res) => {
+  res.send("Get all notes");
+});
 export default router;
