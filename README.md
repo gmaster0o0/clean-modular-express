@@ -180,6 +180,12 @@ import { userData } from '../test/testdata/users.testdata.js'
 import { getUserController } from '../../app/users/user.controller.js'
 ```
 
+### Integration test conventions
+
+- Use centralized test data from `test/testdata/*.js` so integration tests remain consistent and easy to update.
+- Use `supertest` to exercise Express routes directly and avoid manual HTTP server setup.
+- Use `statusCodes` from `app/utils/status-codes.js` to assert response status values consistently.
+
 ## Notes
 
 - The architecture is intentionally simple and demonstrative.

@@ -18,7 +18,8 @@ export default defineConfig({
       {
         test: {
           name: 'integration',
-          include: ['app/**/*int.spec.js'],
+          include: ['test/integration-test/**/*.int.js'],
+          setupFiles: ['test/setup/integration.setup.js'],
         },
       },
     ],
