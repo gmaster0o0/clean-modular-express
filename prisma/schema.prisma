@@ -13,8 +13,8 @@ datasource db {
 
 model User {
   id       String    @id @default(uuid())
-  name     String    // Ezt használhatod kijelzésre
-  email    String    @unique // A Better Auth-nak ez a bejelentkezési azonosítója
+  name     String    
+  email    String    @unique
   sessions Session[]
   accounts Account[]
 
@@ -37,7 +37,7 @@ model Account {
   providerId String
   userId     String
   user       User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  password   String? // Itt fog lakni a hashelt jelszó
+  password   String? 
 
   @@map("account")
 }
