@@ -87,6 +87,30 @@ Database / Prisma
 HTTP Response
 ```
 
+## Authentication and authorization
+
+The app includes an auth guard and role-based permissions in `app/auth/auth.guard.js`.
+
+- `createAuthGuard(auth)` protects routes by validating the current session with `auth.api.getSession({ headers: req.headers })`.
+- If there is no valid session, it throws an `Unauthorized` error.
+- When authentication succeeds, it attaches `req.user` and `req.session` to the request.
+- `restrictTo(...roles)` enforces user role permissions and throws `Forbidden` when the signed-in user does not have an allowed role.
+
+Example usage:
+
+```js
+import { createAuthGuard, restrictTo } from './app/auth/auth.guard.js';
+
+app.get(
+  '/admin',
+  createAuthGuard(auth),
+  restrictTo('admin'),
+  adminController
+);
+```
+
+This pattern keeps authentication and authorization separate from controller logic and makes it easy to protect new routes with role-based access control.
+
 ### Why this structure?
 
 - `app.js` keeps Express initialization separate from route wiring.
