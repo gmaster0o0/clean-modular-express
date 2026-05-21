@@ -1,6 +1,6 @@
-import AppError from '../utils/app-error';
-import { statusCodes } from '../utils/status-codes';
-import catchAsync from '../utils/catch-async';
+import AppError from '../utils/app-error.js';
+import { statusCodes } from '../utils/status-codes.js';
+import catchAsync from '../utils/catch-async.js';
 /**
  * Auth Guard middleware to protect routes and ensure the user is authenticated.
  * @param {*} auth
